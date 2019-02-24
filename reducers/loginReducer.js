@@ -1,7 +1,8 @@
 import * as types from "../actions/types";
 
 const initalState = {
-  user: ""
+  user: "",
+  chatPerson: "?"
 };
 
 export const loginReducer = (state = initalState, action) => {
@@ -11,6 +12,11 @@ export const loginReducer = (state = initalState, action) => {
       return {
         ...state,
         user: action.user
+      };
+    case types.UPDATE:
+      return {
+        ...state,
+        chatPerson: action.chatPerson
       };
     default:
       return state;
