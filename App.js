@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { createSwitchNavigator, createAppContainer } from "react-navigation";
-import { StatusBar } from "react-native";
 import store from "./store";
 import { Provider } from "react-redux";
 
@@ -11,7 +10,6 @@ export default class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <StatusBar hideen />
         <AppContainer />
       </Provider>
     );

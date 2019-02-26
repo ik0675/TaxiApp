@@ -31,7 +31,6 @@ class friends extends Component {
   };
 
   _chatNavigation(name) {
-    console.log("What is item : ", name);
     this.props.update(name);
     this.props.navigation.goBack();
   }
@@ -65,7 +64,8 @@ class friends extends Component {
           style={{ backgroundColor: "#F5FCFF" }}
           data={this.state.data}
           renderItem={this._renderItem}
-          keyExtractor={(item, index) => index}
+          //Keys should be unique later
+          keyExtractor={(item, index) => index.toString()}
           ItemSeparatorComponent={this._itemSeparator}
         />
       </SafeAreaView>

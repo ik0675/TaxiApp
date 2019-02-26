@@ -6,7 +6,7 @@ const initalState = {
 };
 
 export const loginReducer = (state = initalState, action) => {
-  console.log("ACTION is ", action);
+  console.log("In loginReducer, ACTION is ", action);
   switch (action.type) {
     case types.LOGIN:
       return {
