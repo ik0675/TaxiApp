@@ -6,65 +6,28 @@ import {
   TouchableOpacity,
   ImageBackground,
   TextInput,
-  Dimensions,
-  ActivityIndicator
+  Dimensions
 } from "react-native";
 
-import { login } from "../actions/login";
 import { connect } from "react-redux";
 
 import bgImage from "../assets/background.jpeg";
 
 const { width: WIDTH } = Dimensions.get("window");
 
-class Home extends Component {
+class signup extends Component {
   state = {
     id: "",
-    pw: "",
-    loading: false,
-    fail: false
-  };
-
-  update = () => {
-    this.setState({
-      loading: !this.state.loading
-    });
-  };
-
-  clear = () => {
-    this.setState({
-      id: "",
-      pw: ""
-    });
-  };
-
-  handleButton = () => {
-    this.setState(
-      {
-        loading: !this.state.loading
-      },
-      () => {
-        this.props.login(
-          this.state.id,
-          this.state.pw,
-          this.props.navigation,
-          this.update,
-          this.clear
-        );
-      }
-    );
+    pw: ""
   };
 
   render() {
-    if (this.state.loading) {
-      return <ActivityIndicator />;
-    }
     return (
       <ImageBackground source={bgImage} style={styles.backgroundContainer}>
         <View>
           <Text style={styles.titleLogo}>RUHungry</Text>
           <TextInput
-            name="id"
+            name="아이디"
             style={styles.input}
             value={this.state.id}
             onChangeText={id => {
@@ -96,16 +59,13 @@ class Home extends Component {
         </View>
 
         <TouchableOpacity style={styles.btnLogin}>
-          <Text style={styles.text} onPress={this.handleButton}>
+          <Text style={styles.text} onPress={() => alert("Hi")}>
             Login
           </Text>
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.btnLogin}>
-          <Text
-            style={styles.text}
-            onPress={() => this.props.navigation.navigate("SignUp")}
-          >
+          <Text style={styles.text} onPress={() => alert("Hi")}>
             Sign Up
           </Text>
         </TouchableOpacity>
@@ -114,16 +74,9 @@ class Home extends Component {
   }
 }
 
-const mapStateToProps = state => ({
-  user: state.loginReducer.user
-});
+const mapDispatchToProps = {};
 
-const mapDispatchToProps = { login: login };
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(Home);
+export default connect(mapDispatchToProps)(signup);
 
 const styles = StyleSheet.create({
   container: {

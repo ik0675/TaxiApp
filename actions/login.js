@@ -1,6 +1,6 @@
 import * as types from "./types";
 
-export const login = (id, pw, navigate, update) => dispatch => {
+export const login = (id, pw, navigation, update, clear) => dispatch => {
   fetch("http://localhost:4000/main", {
     method: "post",
     headers: { "content-type": "application/json" },
@@ -12,16 +12,17 @@ export const login = (id, pw, navigate, update) => dispatch => {
     })
     .then(res => res.json())
     .then(res => {
-      console.log(res);
+      console.log("RES is ", res);
       dispatch({
         type: types.LOGIN,
         user: res
       });
       update();
-      navigate("SignIn");
+      navigation.navigate("SignIn");
     })
     .catch(err => {
-      console.log(err);
-      alert("System err!");
+      alert("ID or PW is not matching!");
+      clear();
+      update();
     });
 };

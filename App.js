@@ -5,6 +5,7 @@ import { Provider } from "react-redux";
 
 import DrawerNavigator from "./components/drawerNavigator";
 import Home from "./components/home";
+import SignUp from "./components/signup";
 
 export default class App extends Component {
   render() {
@@ -19,6 +20,7 @@ export default class App extends Component {
 const routeNavigator = createSwitchNavigator(
   {
     Auth: Home,
+    SignUp: SignUp,
     SignIn: DrawerNavigator
   },
   { initialRouteName: "Auth" }
